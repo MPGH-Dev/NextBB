@@ -1,9 +1,11 @@
 export enum ConfigurationOptions {
-  OptionArgument = "OPTIONAL_ARGUMENT",
+  PathPrefix = "PATH_PREFIX",
+  Port = "PORT",
 }
 
 const optionalConfigurationOptionsDetails = {
-  [ConfigurationOptions.OptionArgument]: "false",
+  [ConfigurationOptions.PathPrefix]: "/api",
+  [ConfigurationOptions.Port]: "8080",
 };
 
 /**

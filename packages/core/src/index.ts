@@ -1,20 +1,40 @@
 import {
   ConfigurationOptions,
-  getConfigOptionBoolean,
+  getConfigOption,
+  getConfigOptionNumber,
   validateConfig,
 } from "./config";
+import { registerRoutes } from "./routes";
 
-const main = async () => {
-  if (!validateConfig()) {
-    console.error("Mandatory configuration options are missing.");
+import Koa from "koa";
+import KoaRouter from "@koa/router";
+
+const validateConfigProcedure = () => {
+  if (process.env?.SKIP_ENV_VALIDATION === "true") {
     return;
   }
 
-  console.log(
-    `Program execution succeeded. Optional Argument: ${getConfigOptionBoolean(
-      ConfigurationOptions.OptionArgument
-    )}`
-  );
+  if (!validateConfig()) {
+    throw new Error("Mandatory configuration options are missing.");
+  }
+};
+
+const main = async () => {
+  validateConfigProcedure();
+
+  const app = new Koa();
+
+  const routerConfig: KoaRouter.RouterOptions = {
+    prefix: getConfigOption(ConfigurationOptions.PathPrefix),
+  };
+
+  const router = new KoaRouter(routerConfig);
+
+  registerRoutes(router);
+
+  app.use(router.routes()).use(router.allowedMethods());
+
+  app.listen(getConfigOptionNumber(ConfigurationOptions.Port));
 };
 
 main().catch(console.error);
