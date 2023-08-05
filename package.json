@@ -1,5 +1,6 @@
 {
   "name": "nextbb",
+  "private": "true",
   "version": "0.0.1",
   "description": "NextBB",
   "repository": "git@github.com:eithan1231/nextbb.git",
