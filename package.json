@@ -1,0 +1,15 @@
+{
+  "name": "nextbb",
+  "version": "0.0.1",
+  "description": "NextBB",
+  "repository": "git@github.com:eithan1231/nextbb.git",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "setup": "yarn boostrap"
+  },
+  "workspaces": [
+    "./packages/core",
+    "./packages/frontend"
+  ]
+}

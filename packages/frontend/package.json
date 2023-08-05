@@ -1,0 +1,7 @@
+{
+  "name": "@nextbb/frontend",
+  "version": "0.0.1",
+  "description": "NextBB Frontend",
+  "main": "./src/index.ts",
+  "license": "MIT"
+}
