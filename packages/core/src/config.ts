@@ -1,6 +1,7 @@
 export enum ConfigurationOptions {
   PathPrefix = "PATH_PREFIX",
   Port = "PORT",
+  MongoUri = "MONGO_URI",
 }
 
 const optionalConfigurationOptionsDetails = {

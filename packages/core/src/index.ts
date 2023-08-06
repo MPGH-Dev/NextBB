@@ -1,10 +1,11 @@
+import { registerRoutes } from "./routes";
+import { startMongoose } from "./mongodb";
 import {
   ConfigurationOptions,
   getConfigOption,
   getConfigOptionNumber,
   validateConfig,
 } from "./config";
-import { registerRoutes } from "./routes";
 
 import Koa from "koa";
 import KoaRouter from "@koa/router";
@@ -21,6 +22,8 @@ const validateConfigProcedure = () => {
 
 const main = async () => {
   validateConfigProcedure();
+
+  await startMongoose();
 
   const app = new Koa();
 
